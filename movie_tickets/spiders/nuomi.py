@@ -11,10 +11,10 @@ import time
 import threading
 import json
 
-from movie.movie_tickets.utils.req import Rep
-from movie.movie_tickets.utils.decorators import make_print
-from movie.movie_tickets.database.nuomi_dt import NuomiDt
-from movie.movie_tickets.database.nuomi_citycode import nuomicode
+from utils.req import Rep
+from utils.decorators import make_print
+from database.nuomi_dt import NuomiDt
+from database.nuomi_citycode import nuomicode
 
 class Nuomi:
 
@@ -206,37 +206,41 @@ class Nuomi:
 
     # 提供给 django 查询的接口
     def get_timetable_from_nuomi(self, url, movie_name, date_mark=0):
+        print('进入get_nuomi')
 
         page = self.rp.req_url(url)
         if not page: return
         try:
             res = self._parse_tickets_html(page, movie_name)
-            if not res: return
+            print(res)
+            if not res : return
             return res[date_mark]
         except:
             return
 
 if __name__ == '__main__':
     nm = Nuomi()
-    res = nm.get_timetable_from_nuomi('https://mdianying.baidu.com/cinema/detail?cinemaId=409#showing', '建军大业',1)
+    # print(type(nm))
+    res = nm.get_timetable_from_nuomi('https://mdianying.baidu.com/cinema/detail?cinemaId=409#showing', '惊奇队长',1)
+    print(res)
     # for i in res:
     #     print(i)
-    # nm._get_city_code()
-    # nm._get_cinema(289, '上海')
-    # nm.crwaler()
-    # res = nm._get_tickets_info('上海', '闵行', '保利', '悟空')
-    # pre = 0
-    # for i in range(1,len(res)):
-    #
-    #     pre_time = res[pre][0].split(':')
-    #     pre_time = int(''.join(pre_time))
-    #
-    #     cur_time = res[i][0].split(':')
-    #     cur_time = int(''.join(cur_time))
-    #
-    #     if pre_time > cur_time:
-    #         break
-    #
-    #     pre += 1
+    nm._get_city_code()
+    nm._get_cinema(289,'上海')
+    nm.crwaler()
+    res = nm._get_tickets_info('上海', '闵行', '保利', '悟空')
+    pre = 0
+    for i in range(1,len(res)):
+
+        pre_time = res[pre][0].split(':')
+        pre_time = int(''.join(pre_time))
+
+        cur_time = res[i][0].split(':')
+        cur_time = int(''.join(cur_time))
+
+        if pre_time > cur_time:
+            break
+
+        pre += 1
 
 

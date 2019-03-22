@@ -6,8 +6,8 @@
 
 import sqlite3
 
-from movie.movie_tickets.database.gene_dt import GeneDt
-from movie.movie_tickets.settings import DATABASE
+from database.gene_dt import GeneDt
+from settings import DATABASE
 
 
 class NuomiDt(GeneDt):
@@ -19,6 +19,8 @@ class NuomiDt(GeneDt):
         self.dtname = 'Nuomi'
 
 
+
 if __name__ == '__main__':
     nm = NuomiDt()
     nm.showall()
+    nm.conn.close()

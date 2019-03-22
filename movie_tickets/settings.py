@@ -1,6 +1,4 @@
-# coding=utf-8
-# author = zhouxin
-# date = 2017.7.5
+
 
 # description
 # 基本设置

@@ -30,6 +30,7 @@ class ProxyList:
                 dct = {}
                 dct['http'] = proxy['http']
                 self._proxies.append(dct)
+                # print(dct)
         except:
             return None
 

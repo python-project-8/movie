@@ -32,20 +32,24 @@ class Rep:
     # 请求网页，成功返回页面信息，失败返回 None
     # @make_print
     def _req_url(self, url, headers, proxies):
-        # print(headers)
+        print(url)
+        print(headers)
         try:
             req = requests.get(url, headers=headers, proxies=proxies, timeout=2)
+            print(req.text)
             self.response_header = req.headers
             req.raise_for_status()
             return req.text
+            print('&&&')
 
         except:
+            print('错误')
             return None
 
     # 请求网页，成功返回页面信息，失败则更换 headers 与 proxies 重新请求，最多重复 3 次
     def req_url(self, url, formobile=False, error=0, use_re_header=False):
 
-        if error == 5:
+        if error == 10:
             print('请求网页 {0} 失败'.format(url))
             return None
 
