@@ -8,7 +8,7 @@ import time
 # http://sou.zhaopin.com/jobs/searchresult.ashx
 
 
-class ZhiLianSpider(object):
+class maoYanSpider(object):
     # url中不变的内容，要和参数进行拼接组成完整的url
     url = 'https://maoyan.com/cinemas?'
 
@@ -79,7 +79,7 @@ def main():
     end_page = int(input('请输入结束页码:'))
 
     # 创建对象，启动爬取程序
-    spider = ZhiLianSpider(start_page, end_page)
+    spider = maoYanSpider(start_page, end_page)
     spider.run()
 
 if __name__ == '__main__':
