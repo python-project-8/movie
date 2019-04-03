@@ -47,9 +47,9 @@ class maoYanSpider(object):
         url2 = "https://maoyan.com"
         for name, address, url in zip(cinema_name, cinema_address, cinema_url):
             item = {
-                '影院名称': name,
-                '影院地址': address,
-                '影院网址': url2 + url,
+                'my_name': name,
+                'my_add': address,
+                'my_url': url2 + url,
             }
             print(item)
         # 再存放到列表中

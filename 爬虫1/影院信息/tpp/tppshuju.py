@@ -17,9 +17,9 @@ print(len(cinema_url))
 items = []
 for name, add, url in zip(cinema_name, cinema_add, cinema_url):
     item = {
-        '影院名称': name,
-        '影院地址': add,
-        '影院网址': url,
+        'tpp_name': name,
+        'tpp_add': add,
+        'tpp_url': url,
     }
     # print(len(item))
     items.append(item)
